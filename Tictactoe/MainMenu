@@ -1,0 +1,59 @@
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.Color;
+import javax.swing.WindowConstants;
+
+public class MainMenu extends JFrame implements ActionListener {
+
+    public MainMenu() {
+        main(null);
+    }
+
+    public static void main(String[] args) {
+        int width = 450;
+        int height = 450;
+
+        ImageIcon icon = new ImageIcon("play.png");
+
+        ImageIcon imgIcon = new ImageIcon("menubackground.png");
+        ImageIcon bgIcon = new ImageIcon(imgIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+        JLabel backgroundLabel = new JLabel(bgIcon);
+        JFrame mainMenu = new JFrame();
+        JButton btnplay = new JButton();
+        btnplay.setBounds(155, 180, 125, 50);
+        btnplay.setVisible(true);
+        btnplay.setBackground(Color.BLUE);
+        btnplay.setIcon(icon);
+        mainMenu.add(btnplay);
+        JPanel panel = new JPanel();
+        panel.add(backgroundLabel);
+        mainMenu.add(panel);
+
+        // Menu Frame
+        mainMenu.setTitle("Tic-Tac-Toe");
+        mainMenu.add(backgroundLabel);
+        mainMenu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        mainMenu.setSize(width, height);
+        mainMenu.setVisible(true);
+        mainMenu.setResizable(false);
+        mainMenu.setLocationRelativeTo(null);
+
+        btnplay.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                mainMenu.dispose();
+                new TicTacToe();
+
+            }
+        });
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+}
